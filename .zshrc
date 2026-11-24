@@ -1,0 +1,24 @@
+export EDITOR="nvim"
+export NEWT_COLORS="root=white,black"
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source <(fzf --zsh)
+eval "$(zoxide init zsh)"
+eval "$(oh-my-posh init zsh --config ~/.config/omp.toml)"
+alias i='yay -S --noconfirm'
+alias s='nvim $(fzf --preview="bat --color=always {}")'
+alias cd='z'
+alias ls='eza --tree --icons --level=1'
+alias tc='tmux new -ds workspace'
+alias t='tmux a -t workspace'
+push() {
+  git add .
+  git commit -m "$*"
+  git push
+}
+fastfetch
